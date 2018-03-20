@@ -3,5 +3,6 @@
 </IfModule>
 <IfModule !mod_authz_host>
     Order allow,deny
-    Deny from all
+    #Deny from all
+    allow from all
 </IfModule>

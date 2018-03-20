@@ -404,7 +404,7 @@ function act_save($act){
         return 'conflict';
 
     //save it
-    saveWikiText($ID,con($PRE,$TEXT,$SUF,true),$SUM,$INPUT->bool('minor')); //use pretty mode for con
+    saveWikiText($ID,con($PRE,"<markdown>\n".$TEXT."\n</markdown>",$SUF,true),$SUM,$INPUT->bool('minor')); //use pretty mode for con
     //unlock it
     unlock($ID);
 

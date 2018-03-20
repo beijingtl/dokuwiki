@@ -246,7 +246,8 @@ class Doku_Renderer_xhtml extends Doku_Renderer {
      * @param $text
      */
     function cdata($text) {
-        $this->doc .= $this->_xmlEntities($text);
+        //$this->doc .= $this->_xmlEntities($text);
+        return $this->doc.=$text;
     }
 
     /**

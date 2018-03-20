@@ -741,10 +741,16 @@ function form_wikitext($attrs) {
     // mandatory attributes
     unset($attrs['name']);
     unset($attrs['id']);
+    $text = str_replace("<markdown>\n",'',$attrs['_text']);
+    $text = str_replace("\n</markdown>",'',$text);
+    /*
     return '<textarea name="wikitext" id="wiki__text" dir="auto" '
                  .buildAttributes($attrs,true).'>'.DOKU_LF
                  .formText($attrs['_text'])
                  .'</textarea>';
+    */
+	return '<div id="editormd" contenteditable="true"><textarea name="wikitext">'.DOKU_LF.formText($text)
+	.'</textarea></div>';
 }
 
 /**

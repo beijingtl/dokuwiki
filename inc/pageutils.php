@@ -715,7 +715,11 @@ function utf8_encodeFN($file,$safe=true){
     if($conf['fnencode'] == 'safe'){
         return SafeFN::encode($file);
     }
-
+    
+    if ($conf['fnencode']=='gb2312'){
+        return iconv('UTF-8','GB2312',$file);
+    }
+    
     $file = urlencode($file);
     $file = str_replace('%2F','/',$file);
     return $file;
@@ -739,7 +743,9 @@ function utf8_decodeFN($file){
     if($conf['fnencode'] == 'safe'){
         return SafeFN::decode($file);
     }
-
+    if ($conf['fnencode']=='gb2312'){
+        return iconv('GB2312','UTF-8',$file);
+    }
     return urldecode($file);
 }
 
